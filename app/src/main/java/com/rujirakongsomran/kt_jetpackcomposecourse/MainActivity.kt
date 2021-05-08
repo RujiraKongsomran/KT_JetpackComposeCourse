@@ -22,7 +22,8 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Column(
+            // region Modifier
+            /*Column(
                 modifier = Modifier
                     .background(Color.Green)
                     .fillMaxHeight(0.5f)
@@ -53,6 +54,10 @@ class MainActivity : ComponentActivity() {
                 Spacer(modifier = Modifier.height(50.dp))
                 Text("World")
             }
+
+             */
+            // endregion
+            // region Row Column Sizing
 //            Column(
 //                modifier = Modifier
 //                    .fillMaxSize()
@@ -78,6 +83,7 @@ class MainActivity : ComponentActivity() {
 //                Text("World")
 //                Text("Hello")
 //            }
+            // endregion
 
 
         }
