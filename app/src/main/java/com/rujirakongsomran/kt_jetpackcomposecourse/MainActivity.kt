@@ -22,7 +22,16 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
+import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -94,7 +103,8 @@ class MainActivity : ComponentActivity() {
 //                Text("Hello")
 //            }
             // endregion
-
+            // region Image Card
+            /*
             val painter = painterResource(id = R.drawable.ice_cream)
             val description = "How to Make Simple Ice Cream"
             val title = "How to Make Simple Ice Cream"
@@ -110,8 +120,63 @@ class MainActivity : ComponentActivity() {
                     title = title
                 )
             }
+             */
+            // endregion
+
+            val fontFamily = FontFamily(
+                    Font(R.font.lexend_thin, FontWeight.Thin),
+                    Font(R.font.lexend_light, FontWeight.Light),
+                    Font(R.font.lexend_regular, FontWeight.Normal),
+                    Font(R.font.lexend_medium, FontWeight.Medium),
+                    Font(R.font.lexend_semibold, FontWeight.SemiBold),
+                    Font(R.font.lexend_bold, FontWeight.Bold),
+                    Font(R.font.lexend_extrabold, FontWeight.ExtraBold)
+            )
+            StylingText(fontFamily)
         }
     }
+}
+@Composable
+fun StylingText(
+    fontFamily : FontFamily
+) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFF101010))
+            .padding(16.dp)
+    ) {
+        Text(
+            text = buildAnnotatedString {
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.Green,
+                        fontSize = 50.sp
+                    )
+                ) {
+                    append("A")
+                }
+                append("ndroid ")
+                withStyle(
+                    style = SpanStyle(
+                        color = Color.Green,
+                        fontSize = 50.sp
+                    )
+                ) {
+                    append("S")
+                }
+                append("pread")
+            },
+            color = Color.White,
+            fontSize = 30.sp,
+            fontFamily = fontFamily,
+            fontWeight = FontWeight.Bold,
+            fontStyle = FontStyle.Italic,
+            textAlign = TextAlign.Center,
+            textDecoration = TextDecoration.None
+        )
+    }
+
 }
 
 @Composable
@@ -165,5 +230,14 @@ fun Greeting(name: String) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    Greeting("Biwberry")
+    val fontFamily = FontFamily(
+        Font(R.font.lexend_thin, FontWeight.Thin),
+        Font(R.font.lexend_light, FontWeight.Light),
+        Font(R.font.lexend_regular, FontWeight.Normal),
+        Font(R.font.lexend_medium, FontWeight.Medium),
+        Font(R.font.lexend_semibold, FontWeight.SemiBold),
+        Font(R.font.lexend_bold, FontWeight.Bold),
+        Font(R.font.lexend_extrabold, FontWeight.ExtraBold)
+    )
+    StylingText(fontFamily)
 }
